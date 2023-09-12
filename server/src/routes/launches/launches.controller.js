@@ -7,7 +7,7 @@ function getAllLaunches(req, res) {
 function httpCreateNewLaunch(req, res) {
   const newLaunch = { ...req.body, launchDate: new Date(req.body.launchDate) };
   createLaunch(newLaunch);
-  return res.status(201).json(newLaunch);
+  return res.status(201).json({ ok: true, data: newLaunch });
 }
 
 module.exports = {

@@ -11,14 +11,20 @@ async function httpGetLaunches() {
 }
 
 async function httpSubmitLaunch(launch) {
-  const response = await fetch(`${BASE_URL}/launches`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(launch)
-  });
-  return await response.json();
+  try {
+    const response = await fetch(`${BASE_URL}/launches`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(launch)
+    });
+    return await response.json();
+  } catch (error) {
+    return {
+      ok:false
+    }
+  }
 }
 
 async function httpAbortLaunch(id) {
